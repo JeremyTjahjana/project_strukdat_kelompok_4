@@ -25,8 +25,7 @@ Node *createNode(char ch, int freq)
     return node;
 }
 
-// FREQUENCY ARRAY
-
+// Menghitung frekuensi karakter dalam string menggunakan array
 vector<int> hitungFrekuensiArray(const string &text)
 {
 
@@ -38,8 +37,7 @@ vector<int> hitungFrekuensiArray(const string &text)
     return freq;
 }
 
-// LINKED LIST
-
+// Menyisipkan node baru ke dalam linked list yang sudah terurut berdasarkan frekuensi.
 void insertSorted(Node *&head, Node *newNode)
 {
 
@@ -59,6 +57,7 @@ void insertSorted(Node *&head, Node *newNode)
     temp->next = newNode;
 }
 
+// Membangun pohon Huffman menggunakan linked list yang sudah terurut berdasarkan frekuensi.
 Node *buildTreeLinkedList(Node *&head)
 {
 
@@ -80,8 +79,7 @@ Node *buildTreeLinkedList(Node *&head)
     return head;
 }
 
-// GENERATE CODE
-
+// Menghasilkan kode Huffman untuk setiap karakter dengan melakukan traversal pada pohon Huffman.
 void generateCode(Node *root, string code, vector<string> &table)
 {
 
@@ -95,7 +93,7 @@ void generateCode(Node *root, string code, vector<string> &table)
     generateCode(root->right, code + "1", table);
 }
 
-// ENCODE
+// Mengubah string asli menjadi string biner berdasarkan kode Huffman yang dihasilkan.
 string encode(const string &text, vector<string> &table)
 {
 
@@ -107,7 +105,7 @@ string encode(const string &text, vector<string> &table)
     return result;
 }
 
-// MEMORY ANALYSIS
+// Menganalisis memori yang digunakan sebelum dan setelah kompresi.
 void analisisMemori(string text, string encoded)
 {
 
@@ -119,8 +117,7 @@ void analisisMemori(string text, string encoded)
     cout << "Memori setelah kompresi: " << compressed << " bit\n";
 }
 
-// PRINT TABLE
-
+// Menampilkan tabel karakter, frekuensi, dan kode Huffman yang dihasilkan.
 void printTable(vector<int> &freq, vector<string> &code)
 {
 
@@ -172,6 +169,7 @@ int main()
 
     Node *head = nullptr;
 
+    // Menyisipkan karakter dan frekuensi ke dalam linked list yang terurut berdasarkan frekuensi.
     for (int i = 0; i < 256; i++)
         if (freq[i] > 0)
             insertSorted(head, createNode((char)i, freq[i]));
