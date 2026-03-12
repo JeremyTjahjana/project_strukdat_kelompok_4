@@ -192,6 +192,7 @@ int main()
     cout << encoded << "\n";
 
     cout << "\nWaktu Eksekusi: " << duration.count() << " microseconds\n";
+    cout << "\n=== ujung program ===\n";
 
     analisisMemori(text, encoded);
 }
